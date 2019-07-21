@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="grid">
+    <% @coins.each_with_index do |coin, index| %>
+      <div class="col-xs-12 <%= index != 0 ? 'col-md-4' : '' %>">
+        <div data-index="<%= index %>" class="card <%= index === 0 ? 'selected' : 'muted' %>" onclick="nextCrypto(event.currentTarget)">
+          <div class="icon">
+            <%= image_tag ("https://www.cryptocompare.com/" + coin["Details"]["IMAGEURL"]) %>
+          </div>
+          <div class="card-header">
+            <div class="title"><%= coin["Name"] %></div>
+            <div class="price">
+              <span><%= number_to_currency(coin["Details"]["PRICE"]) %></span>
+            </div>
+            <div class="percent <%= coin["Details"]["CHANGEPCTDAY"] >= 0 ? 'positive' : 'negative' %>">
+              <span><%= coin["Details"]["CHANGEPCTDAY"] > 0 ? '+' + coin["Details"]["CHANGEPCTDAY"].to_s : coin["Details"]["CHANGEPCTDAY"] %></span>
+            </div>
+          </div>
+          <div class="cover"></div>
+          <div class="card-content">
+            <div class="details">
+              <table>
+                <tbody>
+                <tr>
+                  <td class="key">Price</td>
+                  <td class="value"><%= number_to_currency(coin["Details"]["PRICE"]) %></td>
+                </tr>
+                <tr>
+                  <td class="key">Market Cap</td>
+                  <td class="value"><%= number_to_currency(coin["Details"]["MKTCAP"]) %></td>
+                </tr>
+                <tr>
+                  <td class="key">Supply</td>
+                  <td class="value"><%= number_to_currency(coin["Details"]["SUPPLY"]) %></td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="progress-block">
+                <div class="label">Total Volume (24h)</div>
+                <div class="data">
+                  <div class="data-from"><%= number_to_currency(coin["Details"]["TOTALVOLUME24H"]) %></div>
+                  <div class="data-to"><%= number_to_currency(coin["Details"]["TOTALVOLUME24HTO"]) %></div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress" style="width: <%= coin["Details"]["TOTALVOLUMEPERC24H"] %>%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,222 @@
+// Imports
+@import 'partials/mixins';
+@import 'partials/variables';
+@import 'partials/typography';
+@import 'partials/grid';
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  margin: 0;
+  background: $bg;
+  color: $primary-text;
+}
+
+figcaption, figure, footer, header, main, nav {
+  display: block;
+}
+
+a {
+  color: $primary-text;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  &:active, &:hover {
+    outline-width: 0;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none outside none;
+
+  li {
+    margin: 0 1.75rem 0 0;
+  }
+}
+
+.container {
+  margin: auto;
+  padding: 0 2rem;
+  max-width: 85rem;
+  width: 100%;
+}
+
+.content {
+  padding: 1.5rem 0;
+}
+
+nav {
+  padding: 1rem 0;
+  width: 100%;
+  span {
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: $primary-text;
+  }
+}
+
+.card {
+  position: relative;
+  margin-top: 2.5rem;
+  width: 100%;
+  border-radius: 1rem;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  .icon {
+    position: absolute;
+    max-width: 60px;
+    top: -1.5rem;
+    right: -15px;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    img {
+      max-width: 50px;
+      border-radius: 50%;
+    }
+  }
+  .card-header {
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    .price {
+      color: $primary-text;
+      font-size: 2.5rem;
+      font-weight: bolder;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .percent {
+      &.positive {
+        color: $positive;
+      }
+      &.negative {
+        color: $negative;
+      }
+    }
+  }
+  .cover {
+    position: absolute;
+    width: 100%;
+    border-radius: 0 0 2rem 2rem;
+    height: 30px;
+    background-color: #fff;
+  }
+  .card-content {
+    padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+    background-color: $secondary;
+    border-radius: 0 0 1rem 1rem;
+    .details {
+      width: 100%;
+      margin: 0 auto;
+      max-width: 600px;
+      table {
+        width: 100%;
+        .key {
+          color: #fff;
+          font-weight: bold;
+        }
+        .value {
+          float: right;
+          color: #fff;
+        }
+      }
+      .progress-block {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $primary;
+        margin: 1rem 0;
+        .label {
+          color: #fff;
+          font-weight: bold;
+        }
+        .data {
+          width: 100%;
+          height: 30px;
+          .data-from {
+            float: left;
+          }
+          .data-to {
+            float: right;
+          }
+        }
+        .progress-bar {
+          height: 10px;
+          background-color: $alt;
+          border-radius: 1rem;
+          .progress {
+            height: 10px;
+            border-radius: 1rem;
+            background-color: $action;
+          }
+        }
+      }
+    }
+  }
+  &.selected {
+    box-shadow: rgba(46, 41, 51, 0.08) 0 2px 14px, rgba(71, 63, 79, 0.08) 0 12px 14px;
+    .card-header {
+      padding: 1.75rem 1.5rem 0 1.5rem;
+      .percent {
+        font-size: 1.75rem;
+      }
+    }
+  }
+  &.muted {
+    border: 2px solid $accent;
+    cursor: pointer;
+    .card-header {
+      .price {
+        font-size: 2rem;
+        font-weight: normal;
+      }
+    }
+    .cover {
+      display: none;
+    }
+    .card-content {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 62rem) {
+  body {
+    font-size: 1.25rem;
+  }
+
+  h1 {
+    font-size: 3.75rem;
+    max-width: 100%;
+    width: 68rem;
+  }
+
+  h2 {
+    font-size: 2.625rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+}
