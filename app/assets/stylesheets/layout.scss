@@ -51,12 +51,12 @@ nav {
     }
     .logo-content {
       position: relative;
+      margin-left: 1rem;
       span {
         letter-spacing: .5rem;
         text-transform: uppercase;
-        font-weight: 900;
+        font-weight: bold;
         color: $primary-text;
-        padding-left: 1.25rem;
       }
     }
   }
